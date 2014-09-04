@@ -4,6 +4,8 @@ defmodule BinarySearch do
   end
 
   defp _find([h|_], value, iterations) when h == value, do: %{:value => h, :iterations => iterations}
+  defp _find([], _value, _iterations), do: :not_found
+  defp _find([_h|[]], _value, _iterations), do: :not_found
   defp _find(list, value, iterations) do
     list
     |> _split_list
@@ -17,5 +19,5 @@ defmodule BinarySearch do
   end
 
   defp _pick_split({left_split,  [h|_]}, value) when value < h, do: left_split
-  defp _pick_split({_, right_split}, value), do: right_split
+  defp _pick_split({_, right_split}, _value), do: right_split
 end
